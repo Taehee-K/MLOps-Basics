@@ -33,7 +33,7 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 
 ## Usage
 
-Installation
+### Installation
 
 ```
 git clone https://github.com/Taehee-K/MLOps-Basics.git
@@ -41,13 +41,21 @@ cd MLOps-Basics
 pip install -r requirements.txt
 ```
 
-Train
+### Train
 
 ```
 python train.py
 ```
 
-Inference
+### Monitoring
+
+Visualize TensorBoard Logs
+
+```
+tensorboard --logdir logs/cola
+```
+
+### Inference
 
 ```
 python inference.py
