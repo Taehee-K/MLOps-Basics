@@ -1,0 +1,5 @@
+# compile files
+__pycache__/
+
+logs/
+models/
