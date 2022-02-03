@@ -13,12 +13,12 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 
 </td><td>
 
-| Week |    Course     |       Status       |
-| :--: | :-----------: | :----------------: |
-|  0   | Project Setup | :heavy_check_mark: |
+| Week |                 Course                 |       Status       |
+| :--: | :------------------------------------: | :----------------: |
+|  0   |             Project Setup              | :heavy_check_mark: |
+|  1   | Model Monitoring<br>Weights and Biases | :heavy_check_mark: |
 
-<!--
-|  1   | Project Setup | :heavy_check_mark: |
+<!--d
 |  2   | Project Setup | :heavy_check_mark: |
 |  3   | Project Setup | :heavy_check_mark: |
 |  4   | Project Setup | :heavy_check_mark: |
@@ -49,10 +49,26 @@ python train.py
 
 ### Monitoring
 
+<!--
+
 Visualize TensorBoard Logs
 
 ```
 tensorboard --logdir logs/cola
+```
+-->
+
+WanDB Login
+
+```
+wandb login
+```
+
+After the training is complete, follow the link in the log to see all the plots on wandb dashboard
+
+```
+wandb: Synced 5 W&B file(s), 6 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Synced bert: https://wandb.ai/taehee-k/ops-basics/runs/3qfxb36f
 ```
 
 ### Inference
