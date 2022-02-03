@@ -31,7 +31,7 @@ class DataModule(pl.LightningDataModule):
 
     def tokenize_data(self, example):
         return self.tokenizer(
-            example["sentence"], truncation=True, padding="max_length", max_length=512
+            example["sentence"], truncation=True, padding="max_length", max_length=128
         )
 
     def setup(self, stage=None):
