@@ -17,10 +17,16 @@ class DataModule(pl.LightningDataModule):
 
     """
 
-    def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", batch_size=32):
+    def __init__(
+        self,
+        model_name: str,
+        batch_size: int,
+        max_length: int,
+    ) -> None:
         super().__init__()
 
         self.batch_size = batch_size
+        self.max_length = max_length
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     def prepare_data(self):
@@ -31,7 +37,10 @@ class DataModule(pl.LightningDataModule):
 
     def tokenize_data(self, example):
         return self.tokenizer(
-            example["sentence"], truncation=True, padding="max_length", max_length=128
+            example["sentence"],
+            truncation=True,
+            padding="max_length",
+            max_length=self.max_length,
         )
 
     def setup(self, stage=None):
@@ -61,7 +70,11 @@ class DataModule(pl.LightningDataModule):
 
 
 if __name__ == "__main__":
-    data_model = DataModule()
+    data_model = DataModule(
+        model_name="google/bert_uncased_L-2_H-128_A-2",
+        batch_size=32,
+        max_length=128,
+    )
     data_model.prepare_data()
     data_model.setup()
     # Check data shape

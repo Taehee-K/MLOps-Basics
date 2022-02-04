@@ -1,3 +1,5 @@
+import torch
+import hydra
 import wandb
 
 import pandas as pd
@@ -5,17 +7,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-import torch
+import torchmetrics
 import torch.nn as nn
 import torch.nn.functional as F
-import torchmetrics
 import pytorch_lightning as pl
 from transformers import AutoModelForSequenceClassification
 from sklearn.metrics import confusion_matrix
 
 
 class ColaModel(pl.LightningModule):
-    def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", lr=1e-5):
+    def __init__(self, model_name: str, lr: float) -> None:
         # define initialisations
         super(ColaModel, self).__init__()
         self.save_hyperparameters()
@@ -86,7 +87,7 @@ class ColaModel(pl.LightningModule):
         preds = torch.argmax(logits, 1)
         # cm = confusion_matrix(labels.numpy(), preds.numpy())
 
-        ## Ways to track metrics
+        ## Ways to track metrics - Confusion Matrix
         # 1. Confusion matrix plotting using inbuilt W&B method
         self.logger.experiment.log(
             {

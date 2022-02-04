@@ -5,4 +5,6 @@ scikit-learn==0.24.2
 wandb
 torchmetrics
 matplotlib
-seaborn
+hydra-core
+omegaconf
+hydra_colorlog
