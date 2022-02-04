@@ -17,9 +17,9 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 | :--: | :------------------------------------: | :----------------: |
 |  0   |             Project Setup              | :heavy_check_mark: |
 |  1   | Model Monitoring<br>Weights and Biases | :heavy_check_mark: |
+|  2   |        Configurations<br>Hydra         | :heavy_check_mark: |
 
-<!--d
-|  2   | Project Setup | :heavy_check_mark: |
+<!--
 |  3   | Project Setup | :heavy_check_mark: |
 |  4   | Project Setup | :heavy_check_mark: |
 |  5   | Project Setup | :heavy_check_mark: |
@@ -45,6 +45,12 @@ pip install -r requirements.txt
 
 ```
 python train.py
+```
+
+Use `--multirun`(`-m`) to train with different parameter combinations
+
+```
+python train.py -m training.max_epochs=2,5 processing.batch_size=32,64,128
 ```
 
 ### Monitoring
