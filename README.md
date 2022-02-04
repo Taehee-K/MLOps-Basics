@@ -4,12 +4,12 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 
 <table>
 <tr>
-    <td align="center">Overview</td>
-    <td align="center">Weekly Curriculum</td>
+    <td align="center"><b>Overview</b></td>
+    <td align="center"><b>Weekly Curriculum</b></td>
 </tr>
 <tr><td>
 
-<img width = 500 src = "https://user-images.githubusercontent.com/63901494/149688252-d8c246ea-b11d-4c0a-9f0b-69a8348bb72c.png">
+<img width = 560 src = "https://user-images.githubusercontent.com/63901494/149688252-d8c246ea-b11d-4c0a-9f0b-69a8348bb72c.png">
 
 </td><td>
 
