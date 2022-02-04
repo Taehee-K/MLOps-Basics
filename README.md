@@ -13,18 +13,18 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 
 </td><td>
 
-| Week |                 Course                 |       Status       |
-| :--: | :------------------------------------: | :----------------: |
-|  0   |             Project Setup              | :heavy_check_mark: |
-|  1   | Model Monitoring<br>Weights and Biases | :heavy_check_mark: |
-|  2   |        Configurations<br>Hydra         | :heavy_check_mark: |
-|  3   |      Data Version Control<br>DVC       | :heavy_check_mark: |
-|  4   |        Model Packaging<br>ONNX         |                    |
-|  5   |       Model Packaging<br>Docker        |                    |
-|  6   |        CI/CD<br>GitHub Actions         |                    |
-|  7   |     Container Registry<br>AWS ECR      |                    |
-|  8   |  Serverless Deployment<br>AWS Lambda   |                    |
-|  9   |    Prediction Monitoring<br>Kibana     |                    |
+|  #  |                 Course                 |       Status       |
+| :-: | :------------------------------------: | :----------------: |
+|  0  |             Project Setup              | :heavy_check_mark: |
+|  1  | Model Monitoring<br>Weights and Biases | :heavy_check_mark: |
+|  2  |        Configurations<br>Hydra         | :heavy_check_mark: |
+|  3  |      Data Version Control<br>DVC       | :heavy_check_mark: |
+|  4  |        Model Packaging<br>ONNX         |                    |
+|  5  |       Model Packaging<br>Docker        |                    |
+|  6  |        CI/CD<br>GitHub Actions         |                    |
+|  7  |     Container Registry<br>AWS ECR      |                    |
+|  8  |  Serverless Deployment<br>AWS Lambda   |                    |
+|  9  |    Prediction Monitoring<br>Kibana     |                    |
 
 </td></tr>
 </table>
