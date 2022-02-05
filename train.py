@@ -15,13 +15,16 @@ from model import ColaModel
 
 logger = logging.getLogger(__name__)
 
+
 @hydra.main(config_path="./configs", config_name="config")
 def main(cfg):
     # print(OmegaConf.to_yaml(cfg, resolve=True))
     logger.info(OmegaConf.to_yaml(cfg, resolve=True))
     logger.info(f"Using the model: {cfg.model.name}")
     logger.info(f"Using the tokenizer: {cfg.model.tokenizer}")
-    
+
+    root_dir = hydra.utils.get_original_cwd()
+
     cola_data = DataModule(
         model_name=cfg.model.tokenizer,
         batch_size=cfg.processing.batch_size,
@@ -31,7 +34,7 @@ def main(cfg):
 
     # CALLBACK
     checkpoint_callback = ModelCheckpoint(
-        dirpath="./models", filename="best-checkpoint", monitor="valid/loss", mode="min"
+        dirpath=f"{root_dir}/models", filename="best-checkpoint", monitor="valid/loss", mode="min"
     )
     early_stopping_callback = EarlyStopping(
         monitor="valid/loss", patience=3, verbose=True, mode="min"
