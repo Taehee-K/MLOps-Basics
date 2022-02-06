@@ -19,7 +19,7 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 |  1  | Model Monitoring<br>Weights and Biases | :heavy_check_mark: |
 |  2  |        Configurations<br>Hydra         | :heavy_check_mark: |
 |  3  |      Data Version Control<br>DVC       | :heavy_check_mark: |
-|  4  |        Model Packaging<br>ONNX         |                    |
+|  4  |        Model Packaging<br>ONNX         | :heavy_check_mark: |
 |  5  |       Model Packaging<br>Docker        |                    |
 |  6  |        CI/CD<br>GitHub Actions         |                    |
 |  7  |     Container Registry<br>AWS ECR      |                    |
@@ -63,17 +63,6 @@ wandb login
 
 After the training is complete, follow the link in the log to see all the plots on wandb dashboard
 
-```
-wandb: Synced 5 W&B file(s), 6 media file(s), 2 artifact file(s) and 0 other file(s)
-wandb: Synced bert: https://wandb.ai/taehee-k/ops-basics/runs/3qfxb36f
-```
-
-### Inference
-
-```
-python inference.py
-```
-
 ### Versioning Data
 
 Install & Initialize DVC
@@ -93,7 +82,7 @@ Add trained model to remote storage
 
 ```
 cd dvcfiles # create folder to save dvc files
-dvc add {best-model-checkpoint.ckpt} --file {trained_model}.dvc
+dvc add {best-model-checkpoint}.ckpt --file {trained_model}.dvc
 dvc push {trained_model}.dvc
 ```
 
@@ -101,7 +90,7 @@ Pull checkpoint from remote storage
 
 ```
 cd dvcfiles
-dvc pull trained_model.dvc
+dvc pull {trained_model}.dvc
 ```
 
 ### Versioning Models
@@ -112,3 +101,29 @@ Tag the commit(version) to a particular dvc file
 git tag -a "v{0.0}" -m "Version {0.0}"
 git push origin v{0.0}
 ```
+
+### Exporting model to ONNX
+
+Convert trained model to onnx
+
+```
+python convert_model_to_onnx.py
+```
+
+### Inference
+
+#### Inference using standard pytorch
+
+```
+python inference.py
+```
+
+#### Inference using ONNX Runtime
+
+```
+python inference_onnx.py
+```
+
+<!--
+## Structure
+-->
