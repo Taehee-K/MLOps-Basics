@@ -19,9 +19,9 @@ class DataModule(pl.LightningDataModule):
 
     def __init__(
         self,
-        model_name: str,
-        batch_size: int,
-        max_length: int,
+        model_name: str = "google/bert_uncased_L-2_H-128_A-2",
+        batch_size: int = 64,
+        max_length: int = 128,
     ) -> None:
         super().__init__()
 

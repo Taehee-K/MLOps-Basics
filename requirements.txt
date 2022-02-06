@@ -8,3 +8,5 @@ matplotlib
 hydra-core
 omegaconf
 hydra_colorlog
+dvc
+onnxruntime
