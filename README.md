@@ -9,22 +9,22 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 </tr>
 <tr><td>
 
-<img width = 560 src = "https://user-images.githubusercontent.com/63901494/149688252-d8c246ea-b11d-4c0a-9f0b-69a8348bb72c.png">
+<img width = 550 src = "https://user-images.githubusercontent.com/63901494/149688252-d8c246ea-b11d-4c0a-9f0b-69a8348bb72c.png">
 
 </td><td>
 
-|  #  |                 Course                 |       Status       |
-| :-: | :------------------------------------: | :----------------: |
-|  0  |             Project Setup              | :heavy_check_mark: |
-|  1  | Model Monitoring<br>Weights and Biases | :heavy_check_mark: |
-|  2  |        Configurations<br>Hydra         | :heavy_check_mark: |
-|  3  |      Data Version Control<br>DVC       | :heavy_check_mark: |
-|  4  |        Model Packaging<br>ONNX         | :heavy_check_mark: |
-|  5  |       Model Packaging<br>Docker        |                    |
-|  6  |        CI/CD<br>GitHub Actions         |                    |
-|  7  |     Container Registry<br>AWS ECR      |                    |
-|  8  |  Serverless Deployment<br>AWS Lambda   |                    |
-|  9  |    Prediction Monitoring<br>Kibana     |                    |
+|  #  |                 Course                 | :triangular_flag_on_post: |
+| :-: | :------------------------------------: | :-----------------------: |
+|  0  |             Project Setup              |    :heavy_check_mark:     |
+|  1  | Model Monitoring<br>Weights and Biases |    :heavy_check_mark:     |
+|  2  |        Configurations<br>Hydra         |    :heavy_check_mark:     |
+|  3  |      Data Version Control<br>DVC       |    :heavy_check_mark:     |
+|  4  |        Model Packaging<br>ONNX         |    :heavy_check_mark:     |
+|  5  |       Model Packaging<br>Docker        |    :heavy_check_mark:     |
+|  6  |        CI/CD<br>GitHub Actions         |                           |
+|  7  |     Container Registry<br>AWS ECR      |                           |
+|  8  |  Serverless Deployment<br>AWS Lambda   |                           |
+|  9  |    Prediction Monitoring<br>Kibana     |                           |
 
 </td></tr>
 </table>
@@ -122,6 +122,54 @@ python inference.py
 
 ```
 python inference_onnx.py
+```
+
+<!--
+### Inference using FastAPI
+
+```
+uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+```
+-->
+
+### Docker
+
+[Install Docker](https://docs.docker.com/engine/install/)
+
+Build docker image
+
+```
+docker build -t {repository-name}:{tag} .
+```
+
+<!--
+Delete docker image: docker rmi -f {image-id}
+-->
+
+Check weather image was built successfully
+
+```
+docker images
+```
+
+Run docker container
+
+```
+docker run -p 8000:8000 --name {container-name} {repository-name}:{tag}
+```
+
+<!--
+Delete docker container
+docker stop {continer-id}
+docker rm {container-id}
+-->
+
+(or)
+
+Build and run docker container
+
+```
+docker-compose up
 ```
 
 <!--
