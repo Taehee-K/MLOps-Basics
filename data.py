@@ -54,7 +54,9 @@ class DataModule(pl.LightningDataModule):
 
             self.val_data = self.val_data.map(self.tokenize_data, batched=True)
             self.val_data.set_format(
-                type="torch", columns=["input_ids", "attention_mask", "label"]
+                type="torch",
+                columns=["input_ids", "attention_mask", "label"],
+                output_all_columns=True,    # keep unformatted columns
             )
 
     # dataloaders

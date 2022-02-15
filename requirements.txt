@@ -10,3 +10,5 @@ omegaconf
 hydra_colorlog
 dvc
 onnxruntime
+fastapi
+uvicorn
