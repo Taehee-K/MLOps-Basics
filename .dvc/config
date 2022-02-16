@@ -2,3 +2,5 @@
     remote = storage
 ['remote "storage"']
     url = gdrive://1o_fZ5FV6f515XNnM6oz5epogpXITLCc1
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = ../credentials.json
