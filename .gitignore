@@ -6,3 +6,6 @@ multirun/
 outputs/
 models/
 wandb/
+
+# credentials for google cloud service account
+credentials.json
