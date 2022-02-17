@@ -6,13 +6,13 @@ WORKDIR /app
 # install requirements
 RUN pip install -r requirements.txt
 
-# configuring remote server in dvc
-RUN dvc remote add -d storage gdrive://1o_fZ5FV6f515XNnM6oz5epogpXITLCc1
-RUN dvc remote modify storage gdrive_use_service_account=true
-RUN dvc remote modify storage gdrive_service_account_json=credentials.json
+# # configuring remote server in dvc
+# RUN dvc remote add -d storage gdrive://1o_fZ5FV6f515XNnM6oz5epogpXITLCc1
+# RUN dvc remote modify storage gdrive_use_service_account true
+# RUN dvc remote modify storage gdrive_service_account_json credentials.json
 
-# pulling trained model
-RUN dvc pull dvcfiles/trained_model.dvc
+# # pulling trained model
+# RUN dvc pull dvcfiles/trained_model.dvc
 
 
 RUN export LC_ALL=C.UTF-8 && export LANG=C.UTF-8
