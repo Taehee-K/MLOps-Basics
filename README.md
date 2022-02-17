@@ -9,7 +9,7 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 </tr>
 <tr><td>
 
-<img width = 550 src = "https://user-images.githubusercontent.com/63901494/149688252-d8c246ea-b11d-4c0a-9f0b-69a8348bb72c.png">
+<img width = 570 src = "https://user-images.githubusercontent.com/63901494/149688252-d8c246ea-b11d-4c0a-9f0b-69a8348bb72c.png">
 
 </td><td>
 
@@ -21,7 +21,7 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 |  3  |      Data Version Control<br>DVC       |    :heavy_check_mark:     |
 |  4  |        Model Packaging<br>ONNX         |    :heavy_check_mark:     |
 |  5  |       Model Packaging<br>Docker        |    :heavy_check_mark:     |
-|  6  |        CI/CD<br>GitHub Actions         |                           |
+|  6  |        CI/CD<br>GitHub Actions         |    :heavy_check_mark:     |
 |  7  |     Container Registry<br>AWS ECR      |                           |
 |  8  |  Serverless Deployment<br>AWS Lambda   |                           |
 |  9  |    Prediction Monitoring<br>Kibana     |                           |
@@ -131,6 +131,25 @@ python inference_onnx.py
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 ```
 -->
+
+### Google Service Account
+
+Create [GCP service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+
+Add `credentials.json` file to working directory - created during gcp service account creation
+
+**NOTE: Do NOT share `credentials.json` file publicly**
+
+#### Configuring DVC
+
+Use service account instead of actual google account using gcp service account credentials
+
+```
+dvc init
+dvc remote add -d storage gdrive://{google-drive folder id}
+dvc remote modify storage gdrive_use_service_account true
+dvc remote modify storage gdrive_service_account_json_file_path {credentials}.json
+```
 
 ### Docker
 
