@@ -22,7 +22,7 @@ Curriculum based on [graviraja/MLOps-Basics](https://github.com/graviraja/MLOps-
 |  4  |        Model Packaging<br>ONNX         |    :heavy_check_mark:     |
 |  5  |       Model Packaging<br>Docker        |    :heavy_check_mark:     |
 |  6  |        CI/CD<br>GitHub Actions         |    :heavy_check_mark:     |
-|  7  |     Container Registry<br>AWS ECR      |                           |
+|  7  |     Container Registry<br>AWS ECR      |    :heavy_check_mark:     |
 |  8  |  Serverless Deployment<br>AWS Lambda   |                           |
 |  9  |    Prediction Monitoring<br>Kibana     |                           |
 
@@ -63,19 +63,21 @@ wandb login
 
 After the training is complete, follow the link in the log to see all the plots on wandb dashboard
 
-### Versioning Data
+### Versioning Data with Remote Storage
 
 Install & Initialize DVC
 
 ```
-pip install 'dvc[gdrive]'
+pip install "dvc[gdrive]"   # when using Google Drive as remote storage
+pip install "dvc[s3]"       # when using AWS S3 as remote storage
 dvc init
 ```
 
-Configure `Google Drive` as remote storage
+Configure remote storage
 
 ```
-dvc remote add -d storage gdrive://{google-drive folder id}
+dvc remote add -d {name} gdrive://{google-drive folder id} # Google Drive
+dvc remote add -d {name} s3://{s3-url}                     # AWS S3
 ```
 
 Add trained model to remote storage
@@ -145,11 +147,24 @@ Add `credentials.json` file to working directory - created during gcp service ac
 Use service account instead of actual google account using gcp service account credentials
 
 ```
-dvc init
-dvc remote add -d storage gdrive://{google-drive folder id}
 dvc remote modify storage gdrive_use_service_account true
 dvc remote modify storage gdrive_service_account_json_file_path {credentials}.json
 ```
+
+### S3 & ECR
+
+Create bucket in [Amazon S3](https://console.aws.amazon.com/s3/)
+
+- Go to `My Security Credentials`
+- Navigate to `Access Keys` and click on `Create New Access Key`
+- Download CSV file containing `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+
+```
+export AWS_ACCESS_KEY_ID=<ACCESS KEY ID>
+export AWS_SECRET_ACCESS_KEY=<ACCESS SECRET>
+```
+
+**NOTE: Do NOT share `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` publicly**
 
 ### Docker
 
@@ -193,4 +208,34 @@ docker-compose up
 
 <!--
 ## Structure
+-->
+
+### Push Docker Image to ECR
+
+Create repository in AWS ECR
+
+- Authenticate docker client to ECR
+- Build docker image
+- Tag docker image
+- Push image to AWS ECR repository
+
+Push commands for the above steps can be found in AWS ECR repository page
+
+<!--
+Authenticate docker client to ECR
+```
+aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 150017854996.dkr.ecr.us-east-2.amazonaws.com
+```
+Build docker image
+```
+docker build -t mlops-basics:{tag} .
+```
+Tag docker image
+```
+docker tag mlops-basics:{tag} 150017854996.dkr.ecr.us-east-2.amazonaws.com/mlops-basics:{tag}
+```
+Push image to AWS ECR repository
+```
+docker push 150017854996.dkr.ecr.us-east-2.amazonaws.com/mlops-basics:{tag}
+```
 -->
