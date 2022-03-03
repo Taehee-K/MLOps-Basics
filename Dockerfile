@@ -21,14 +21,13 @@ RUN pip install -r requirements.txt
 # RUN dvc remote modify storage gdrive_service_account_json credentials.json
 
 # initialize dvc
-RUN dvc init --no-scm
+# RUN dvc init --no-scm
 # configuring remote server in dvc
 # RUN dvc remote add -d storage-s3 s3://mlops-basics-model/trained_models/
 
-RUN cat .dvc/config
-# pulling trained model
-RUN dvc pull dvcfiles/trained_model.dvc
-
+# RUN cat .dvc/config
+# # pulling trained model
+# RUN dvc pull dvcfiles/trained_model.dvc
 
 RUN export LC_ALL=C.UTF-8 && export LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
